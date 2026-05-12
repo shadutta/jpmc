@@ -467,6 +467,188 @@
       background: var(--bg-primary);
     }
 
+    .dash-story {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px 32px 24px;
+      margin-bottom: 32px;
+      border-top: 3px solid var(--accent-blue);
+    }
+    .dash-story-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(20px, 2.8vw, 26px);
+      font-weight: 400;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      color: var(--text-primary);
+    }
+    .dash-viz-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 8px 4px;
+      margin-bottom: 16px;
+    }
+    .dash-viz-step {
+      flex: 1 1 72px;
+      max-width: 120px;
+      text-align: center;
+    }
+    .dash-viz-graphic {
+      height: 52px;
+      margin: 0 auto 8px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+    .dash-g-frag {
+      gap: 5px;
+      align-items: flex-end;
+    }
+    .dash-g-frag span {
+      width: 11px;
+      border-radius: 2px 2px 0 0;
+      background: linear-gradient(180deg, var(--accent-blue-pale) 0%, var(--border) 100%);
+    }
+    .dash-g-frag span:nth-child(1) { height: 55%; }
+    .dash-g-frag span:nth-child(2) { height: 88%; }
+    .dash-g-frag span:nth-child(3) { height: 42%; }
+    .dash-g-sql {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      height: 52px;
+    }
+    .dash-g-sql span {
+      display: block;
+      width: 34px;
+      height: 3px;
+      background: var(--accent-blue);
+      border-radius: 1px;
+    }
+    .dash-g-bi {
+      gap: 4px;
+      align-items: flex-end;
+    }
+    .dash-g-bi span {
+      width: 8px;
+      border-radius: 2px 2px 0 0;
+      background: var(--accent-blue);
+    }
+    .dash-g-bi span:nth-child(1) { height: 35%; }
+    .dash-g-bi span:nth-child(2) { height: 55%; }
+    .dash-g-bi span:nth-child(3) { height: 70%; }
+    .dash-g-bi span:nth-child(4) { height: 100%; }
+    .dash-g-team.dash-viz-graphic {
+      display: block;
+      position: relative;
+      width: 56px;
+      height: 36px;
+      margin: 0 auto 8px;
+    }
+    .dash-g-team span {
+      position: absolute;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--accent-blue-light);
+      border: 2px solid var(--bg-card);
+      box-sizing: border-box;
+    }
+    .dash-g-team span:nth-child(1) { left: 0; top: 8px; z-index: 1; }
+    .dash-g-team span:nth-child(2) { left: 17px; top: 0; z-index: 2; background: var(--accent-blue); }
+    .dash-g-team span:nth-child(3) { left: 34px; top: 8px; z-index: 1; background: var(--accent-blue-pale); }
+    .dash-viz-cap {
+      display: block;
+      font-size: 10px;
+      font-weight: 500;
+      line-height: 1.35;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+    .dash-viz-arrow {
+      flex: 0 0 auto;
+      align-self: center;
+      padding-bottom: 22px;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--accent-gold);
+      line-height: 1;
+    }
+    .dash-viz-out .dash-viz-metric {
+      display: block;
+      font-family: "Courier Prime", monospace;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--accent-blue);
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .dash-story-micro {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+      max-width: 62ch;
+    }
+    .dash-charts-note {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      max-width: 70ch;
+      line-height: 1.5;
+    }
+
+    .dash-glance {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .dash-glance-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent-blue);
+      margin-bottom: 10px;
+    }
+    .dash-glance-bar {
+      display: flex;
+      height: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      border: 1px solid var(--border);
+    }
+    .dash-glance-bar i {
+      display: block;
+      height: 100%;
+    }
+    .dash-glance-hints {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding: 0;
+    }
+    .dash-glance-hints li {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+    }
+
     /* —— Timeline —— */
     .timeline {
       position: relative;
@@ -694,6 +876,16 @@
       }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .stat-pills { flex-direction: column; }
+      .dash-story { padding: 22px 18px 18px; }
+      .dash-viz-row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .dash-viz-step { max-width: none; width: 100%; }
+      .dash-viz-arrow {
+        transform: rotate(90deg);
+        padding: 4px 0 8px;
+      }
     }
   </style>
 </head>
@@ -745,7 +937,7 @@
           <div class="value-accent" style="background:#C9A84C"></div>
           <div class="value-num">02</div>
           <h3 class="value-card-title">Portfolio Analytics &amp; Dashboards</h3>
-          <p class="value-body">Built Power BI and Tableau dashboards integrating CRM and operational data at Strayos, improving customer satisfaction 20%. I turn raw data into the quarterly snapshots and portfolio reviews senior management relies on.</p>
+          <p class="value-body">Strayos: siloed CRM, usage, and support data → one governed Power BI / Tableau layer (SQL I owned). <strong>+20% customer satisfaction.</strong> Visual flow in the analytical section below.</p>
           <div class="tag-row">
             <span class="tag">Power BI</span>
             <span class="tag">Tableau</span>
@@ -772,7 +964,40 @@
     <div class="section-inner">
       <p class="section-label io-fade-up io-observe">Analytical Capability</p>
       <h2 class="section-title font-display io-fade-up io-observe">The Kind of Work I Do</h2>
-      <p class="section-sub io-fade-up io-observe">A simulated Business Services credit portfolio — the exact analyses a Credit Risk Analyst prepares for senior management.</p>
+      <p class="section-sub io-fade-up io-observe">Strayos story below (visual). Charts: illustrative Business Services–style portfolio views.</p>
+
+      <div class="dash-story io-fade-up io-observe">
+        <h3 class="dash-story-title font-display">What the dashboards solved</h3>
+        <div class="dash-viz-row" aria-label="Delivery flow from fragmented data to outcome">
+          <div class="dash-viz-step">
+            <div class="dash-viz-graphic dash-g-frag" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="dash-viz-cap">Siloed sources</span>
+          </div>
+          <div class="dash-viz-arrow" aria-hidden="true">→</div>
+          <div class="dash-viz-step">
+            <div class="dash-viz-graphic dash-g-sql" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="dash-viz-cap">SQL + metric rules</span>
+          </div>
+          <div class="dash-viz-arrow" aria-hidden="true">→</div>
+          <div class="dash-viz-step">
+            <div class="dash-viz-graphic dash-g-bi" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <span class="dash-viz-cap">Power BI · Tableau</span>
+          </div>
+          <div class="dash-viz-arrow" aria-hidden="true">→</div>
+          <div class="dash-viz-step">
+            <div class="dash-viz-graphic dash-g-team" aria-hidden="true"><span></span><span></span><span></span></div>
+            <span class="dash-viz-cap">CS · Marketing · Leadership</span>
+          </div>
+          <div class="dash-viz-arrow" aria-hidden="true">→</div>
+          <div class="dash-viz-step dash-viz-out">
+            <span class="dash-viz-metric">+20%</span>
+            <span class="dash-viz-cap">Customer satisfaction</span>
+          </div>
+        </div>
+        <p class="dash-story-micro">Still learning (Kelley). <strong>Claude</strong> = stress-test metrics &amp; narrative. <strong>Cursor</strong> = faster UI iteration. You still validate and sign off.</p>
+      </div>
+
+      <p class="dash-charts-note io-fade-up io-observe"><strong>Illustrative</strong> — sample portfolio lenses below (concentration, trend, KPIs vs benchmark, outcomes).</p>
 
       <div class="dash-grid">
         <div class="dash-card io-dash io-observe">
@@ -810,6 +1035,21 @@
               <span>11%</span>
               <span class="legend-bar"><i style="width:11%;background:#D4856A"></i></span>
             </div>
+          </div>
+
+          <div class="dash-glance io-fade-up io-observe">
+            <p class="dash-glance-title">Risk mix · read visually</p>
+            <div class="dash-glance-bar" title="Share of illustrative AUM by rating" aria-hidden="true">
+              <i style="width:38%;background:#1B4F8A"></i>
+              <i style="width:29%;background:#4A7FC1"></i>
+              <i style="width:22%;background:#C9A84C"></i>
+              <i style="width:11%;background:#D4856A"></i>
+            </div>
+            <ul class="dash-glance-hints">
+              <li>Where dollars concentrate</li>
+              <li>Weak buckets at a glance</li>
+              <li>Same frame for committee</li>
+            </ul>
           </div>
         </div>
 
@@ -872,7 +1112,7 @@
           <span class="tl-dot"></span>
           <div class="tl-content">
             <h3 class="tl-role font-display">Business Analyst</h3>
-            <p class="tl-desc">Designed BPMN process workflows reducing operational redundancies 15%. Configured Power BI and Excel dashboards integrating CRM and operational data for actionable client insights.</p>
+            <p class="tl-desc">Designed BPMN process workflows reducing operational redundancies 15%. Owned the CRM-to-dashboard data path: mapped entities with CS, wrote the SQL grain behind Power BI and Excel views, and validated refresh logic before go-live so account reviews used one definition of health. Configured dashboards integrating CRM and operational data for actionable client insights.</p>
             <div class="tl-impact">20% improvement in customer satisfaction through data-driven dashboard configuration</div>
             <div class="tag-row">
               <span class="tag">Power BI</span>
@@ -997,6 +1237,8 @@
             <span class="skill-pill">Client Liaison</span>
             <span class="skill-pill">Training &amp; Instructional Design</span>
             <span class="skill-pill">Project Documentation</span>
+            <span class="skill-pill">Claude (analysis copilot)</span>
+            <span class="skill-pill">Cursor (build velocity)</span>
           </div>
         </div>
       </div>
