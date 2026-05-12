@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shamik Dutta Majumdar — Credit Risk Analyst</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Courier+Prime&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-primary: #F5F0E8;
+      --bg-card: #FFFFFF;
+      --bg-dark: #1A1A1A;
+      --accent-blue: #1B4F8A;
+      --accent-blue-light: #4A7FC1;
+      --accent-blue-pale: #8BAFD6;
+      --accent-gold: #C9A84C;
+      --text-primary: #1A1A1A;
+      --text-muted: #6B6B6B;
+      --border: #D8D0C4;
+      --highlight: #F0E68C;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Libre Franklin", system-ui, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .font-display { font-family: "Cormorant Garamond", Georgia, serif; }
+    .font-data { font-family: "Courier Prime", "Courier New", monospace; }
+
+    /* —— Hero top rule —— */
+    .page-top-rule {
+      height: 4px;
+      background: var(--bg-dark);
+      width: 100%;
+    }
+
+    /* —— Nav —— */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 32px;
+      background: transparent;
+      border-bottom: 1px solid var(--border);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .nav-monogram {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-style: italic;
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-primary);
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      font-size: 13px;
+      font-weight: 500;
+      transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+    .nav-cta:hover {
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* —— Hero —— */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: #F5F0E8;
+    }
+    .hero-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 24px 32px;
+    }
+    .hero-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroIn 0.8s ease 0.3s forwards;
+    }
+    .hero-headline {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(48px, 12vw, 88px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      color: var(--text-primary);
+      margin-top: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroIn 0.8s ease forwards;
+    }
+    .hero-sub {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 48px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: heroIn 0.8s ease 0.6s forwards;
+    }
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 14px 32px;
+      font-family: "Libre Franklin", sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    .btn-pill:hover { transform: translateY(-1px); }
+    .btn-filled {
+      background: #1A1A1A;
+      color: #fff;
+      border-color: #1A1A1A;
+    }
+    .btn-filled:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+    .btn-outline {
+      background: #fff;
+      color: #1A1A1A;
+      border-color: #1A1A1A;
+    }
+    .btn-outline:hover { background: #fafafa; }
+    .hero-rule {
+      margin-top: 48px;
+      border: 0;
+      height: 1px;
+      background: var(--border);
+      max-width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      width: 100vw;
+    }
+
+    @keyframes heroIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* —— Ticker —— */
+    .ticker-wrap {
+      background: #1A1A1A;
+      color: #fff;
+      height: 40px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      margin-top: auto;
+    }
+    .ticker {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 40s linear infinite;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+    }
+    .ticker span { padding-right: 3rem; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* —— Section shell —— */
+    .section {
+      padding: 100px 24px;
+      background: var(--bg-primary);
+    }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(36px, 5vw, 52px);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+    }
+    #skills .section-title { margin-bottom: 48px; }
+    #experience .section-title { margin-bottom: 48px; }
+
+    /* —— IO animations —— */
+    .io-fade-up {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .io-fade-up.io-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .io-card {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .io-card.io-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .io-card:nth-child(1) { transition-delay: 0s; }
+    .io-card:nth-child(2) { transition-delay: 0.1s; }
+    .io-card:nth-child(3) { transition-delay: 0.2s; }
+    .io-card:nth-child(4) { transition-delay: 0.3s; }
+    .io-dash {
+      opacity: 0;
+      transform: scale(0.97);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .io-dash.io-visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .io-dash:nth-child(1) { transition-delay: 0s; }
+    .io-dash:nth-child(2) { transition-delay: 0.08s; }
+    .io-dash:nth-child(3) { transition-delay: 0.16s; }
+    .io-dash:nth-child(4) { transition-delay: 0.24s; }
+    .io-tl-left {
+      opacity: 0;
+      transform: translateX(-24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .io-tl-right {
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .io-tl-left.io-visible, .io-tl-right.io-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .io-skills-group {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .io-skills-group.io-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .io-skills-group:nth-child(1) { transition-delay: 0s; }
+    .io-skills-group:nth-child(2) { transition-delay: 0.08s; }
+    .io-skills-group:nth-child(3) { transition-delay: 0.16s; }
+    .io-skills-group:nth-child(4) { transition-delay: 0.24s; }
+
+    /* —— Value cards —— */
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .value-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+    }
+    .value-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      transform: translateY(-4px);
+    }
+    .value-accent {
+      height: 3px;
+      width: calc(100% + 72px);
+      margin: -36px -36px 24px -36px;
+      border-radius: 4px 4px 0 0;
+    }
+    .value-num {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 64px;
+      font-weight: 300;
+      color: var(--accent-blue-pale);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .value-card-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+    .value-body { font-size: 15px; font-weight: 300; color: var(--text-primary); margin-bottom: 24px; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+      color: var(--text-muted);
+    }
+
+    /* —— Dashboard grid —— */
+    .dash-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .dash-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 28px;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+    }
+    .dash-kicker {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .dash-chart-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .chart-box {
+      position: relative;
+      flex: 1;
+      min-height: 200px;
+    }
+    .doughnut-center {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      padding-bottom: 8%;
+    }
+    .chart-box > canvas { position: relative; z-index: 1; }
+    .doughnut-center .amt {
+      font-family: "Courier Prime", monospace;
+      font-size: 28px;
+      color: var(--text-primary);
+    }
+    .doughnut-center .lbl {
+      font-size: 10px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .legend-rows { margin-top: 16px; }
+    .legend-row {
+      display: grid;
+      grid-template-columns: 10px 1fr auto 1fr;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 8px;
+      font-family: "Courier Prime", monospace;
+      font-size: 12px;
+    }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .legend-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .legend-bar > i {
+      display: block;
+      height: 100%;
+      border-radius: 2px;
+    }
+    .callout {
+      margin-top: 14px;
+      padding: 12px 14px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .callout-italic { font-style: italic; }
+    .metric-flag { color: var(--accent-gold); font-weight: 500; }
+    .kri-note {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-muted);
+      margin-top: 12px;
+    }
+    .kri-summary {
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    .stat-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .stat-pill {
+      font-family: "Courier Prime", monospace;
+      font-size: 11px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--bg-primary);
+    }
+
+    /* —— Timeline —— */
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+    .tl-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+      position: relative;
+    }
+    .tl-row:last-child { margin-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: 50%;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+      transform: translate(-50%, 0);
+      z-index: 1;
+      box-shadow: 0 0 0 4px var(--bg-primary);
+    }
+    .tl-meta { text-align: right; padding-right: 32px; }
+    .tl-row.alt .tl-meta { text-align: left; padding-right: 0; padding-left: 32px; order: 2; }
+    .tl-row.alt .tl-content { order: 1; text-align: right; }
+    .tl-date {
+      font-family: "Courier Prime", monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+    .tl-co {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-blue);
+      margin-top: 6px;
+    }
+    .tl-role {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 26px;
+      font-weight: 400;
+      margin: 10px 0 12px;
+      line-height: 1.2;
+    }
+    .tl-desc { font-size: 15px; color: var(--text-primary); margin-bottom: 14px; }
+    .tl-impact {
+      border-left: 3px solid var(--accent-blue);
+      padding: 12px 16px;
+      margin-bottom: 14px;
+      background: rgba(27, 79, 138, 0.04);
+      font-size: 14px;
+      font-weight: 400;
+    }
+    .tl-row.alt .tl-impact {
+      border-left: none;
+      border-right: 3px solid var(--accent-blue);
+      text-align: right;
+    }
+
+    /* —— Skills —— */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+    .skill-group-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 10px; }
+    .skill-pill {
+      font-size: 12px;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: #fff;
+      cursor: default;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .skill-pill:hover {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    /* —— Education —— */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+    .edu-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 36px;
+    }
+    .edu-accent { height: 3px; margin: -36px -36px 20px -36px; width: calc(100% + 72px); border-radius: 4px 4px 0 0; }
+    .edu-school {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-blue);
+      margin-bottom: 10px;
+    }
+    .edu-degree {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 28px;
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 10px;
+    }
+    .edu-date {
+      font-family: "Courier Prime", monospace;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+    .edu-conc { font-size: 14px; margin-bottom: 16px; }
+    .edu-cw-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    /* —— Footer —— */
+    .footer {
+      background: var(--bg-dark);
+      padding: 80px 24px 48px;
+      color: #fff;
+      text-align: center;
+    }
+    .footer h2 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(40px, 6vw, 64px);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .footer-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin: 0 auto 36px;
+    }
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+    .btn-white {
+      background: #fff;
+      color: var(--bg-dark);
+      border-color: #fff;
+    }
+    .btn-white:hover { box-shadow: 0 8px 28px rgba(255,255,255,0.2); }
+    .btn-ghost-w {
+      background: transparent;
+      color: #fff;
+      border: 1px solid #fff;
+    }
+    .btn-ghost-w:hover { background: rgba(255,255,255,0.08); }
+    .footer-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 48px auto 32px;
+      max-width: 1100px;
+    }
+    .footer-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 1100px;
+      margin: 0 auto;
+      font-size: 11px;
+      color: rgba(255,255,255,0.4);
+    }
+
+    @media (max-width: 767px) {
+      .nav { padding: 16px 20px; }
+      .value-grid,
+      .dash-grid,
+      .skills-grid,
+      .edu-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 12px; transform: none; }
+      .tl-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding-left: 36px;
+      }
+      .tl-dot { left: 12px; transform: translate(-50%, 0); }
+      .tl-meta { text-align: left !important; padding: 0 !important; order: 1 !important; }
+      .tl-content { order: 2 !important; text-align: left !important; }
+      .tl-row.alt .tl-impact {
+        border-right: none;
+        border-left: 3px solid var(--accent-blue);
+        text-align: left;
+      }
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .stat-pills { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero" id="top">
+    <div class="page-top-rule" aria-hidden="true"></div>
+    <nav class="nav">
+      <a href="#top" class="nav-monogram">SDM</a>
+      <a href="mailto:shadutta@iu.edu" class="nav-cta">Get In Touch →</a>
+    </nav>
+    <div class="hero-main">
+      <div class="hero-inner">
+        <p class="hero-eyebrow">CREDIT RISK · BUSINESS SERVICES · JPMORGAN CHASE</p>
+        <h1 class="hero-headline font-display">SHAMIK DUTTA MAJUMDAR</h1>
+        <p class="hero-sub">MS Information Systems · Kelley School of Business</p>
+        <div class="hero-actions">
+          <a href="#work" class="btn-pill btn-filled">View My Work ↓</a>
+          <a href="mailto:shadutta@iu.edu" class="btn-pill btn-outline">shadutta@iu.edu</a>
+        </div>
+      </div>
+      <hr class="hero-rule" />
+    </div>
+    <div class="ticker-wrap" aria-hidden="true">
+      <div class="ticker">
+        <span>CREDIT RISK ANALYSIS · PORTFOLIO MONITORING · KPI FRAMEWORKS · FINANCIAL MODELING · SAP S/4HANA · TABLEAU · POWER BI · SQL · STAKEHOLDER COMMUNICATION · REGRESSION ANALYSIS · BPMN WORKFLOWS · </span>
+        <span>CREDIT RISK ANALYSIS · PORTFOLIO MONITORING · KPI FRAMEWORKS · FINANCIAL MODELING · SAP S/4HANA · TABLEAU · POWER BI · SQL · STAKEHOLDER COMMUNICATION · REGRESSION ANALYSIS · BPMN WORKFLOWS · </span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="value">
+    <div class="section-inner">
+      <p class="section-label io-fade-up io-observe">What I Bring</p>
+      <h2 class="section-title font-display io-fade-up io-observe">Built for Risk Management &amp; Compliance</h2>
+      <p class="section-sub io-fade-up io-observe">Three capabilities that align directly with JPMorgan Chase's Business Services credit team.</p>
+      <div class="value-grid">
+        <article class="value-card io-card io-observe">
+          <div class="value-accent" style="background:#1B4F8A"></div>
+          <div class="value-num">01</div>
+          <h3 class="value-card-title">Forward-Looking Risk Assessment</h3>
+          <p class="value-body">At Atlas Copco and EY, I identified operational and architectural risk gaps using KPI-based projections and regression analysis — the same forward-looking lens JPMC applies to leveraged credit portfolios.</p>
+          <div class="tag-row">
+            <span class="tag">Risk Identification</span>
+            <span class="tag">KPI Projections</span>
+            <span class="tag">Due Diligence</span>
+          </div>
+        </article>
+        <article class="value-card io-card io-observe">
+          <div class="value-accent" style="background:#C9A84C"></div>
+          <div class="value-num">02</div>
+          <h3 class="value-card-title">Portfolio Analytics &amp; Dashboards</h3>
+          <p class="value-body">Built Power BI and Tableau dashboards integrating CRM and operational data at Strayos, improving customer satisfaction 20%. I turn raw data into the quarterly snapshots and portfolio reviews senior management relies on.</p>
+          <div class="tag-row">
+            <span class="tag">Power BI</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Dashboard Config</span>
+          </div>
+        </article>
+        <article class="value-card io-card io-observe">
+          <div class="value-accent" style="background:#1A1A1A"></div>
+          <div class="value-num">03</div>
+          <h3 class="value-card-title">Stakeholder Communication</h3>
+          <p class="value-body">Teaching 500+ students, presenting EY capstone findings, and client-facing work in Bangkok — I communicate complex analysis clearly to executives, partners, and clients alike.</p>
+          <div class="tag-row">
+            <span class="tag">Executive Presentations</span>
+            <span class="tag">Client Liaison</span>
+            <span class="tag">Structured Reporting</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="section-inner">
+      <p class="section-label io-fade-up io-observe">Analytical Capability</p>
+      <h2 class="section-title font-display io-fade-up io-observe">The Kind of Work I Do</h2>
+      <p class="section-sub io-fade-up io-observe">A simulated Business Services credit portfolio — the exact analyses a Credit Risk Analyst prepares for senior management.</p>
+
+      <div class="dash-grid">
+        <div class="dash-card io-dash io-observe">
+          <p class="dash-kicker">Credit Risk Rating Distribution</p>
+          <h3 class="dash-chart-title font-display">Portfolio Risk Breakdown</h3>
+          <div class="chart-box">
+            <canvas id="chartDoughnut"></canvas>
+            <div class="doughnut-center">
+              <span class="amt">$2.4B</span>
+              <span class="lbl">AUM</span>
+            </div>
+          </div>
+          <div class="legend-rows font-data">
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#1B4F8A"></span>
+              <span>Investment Grade</span>
+              <span>38%</span>
+              <span class="legend-bar"><i style="width:38%;background:#1B4F8A"></i></span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#4A7FC1"></span>
+              <span>Performing</span>
+              <span>29%</span>
+              <span class="legend-bar"><i style="width:29%;background:#4A7FC1"></i></span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#C9A84C"></span>
+              <span>Watch List</span>
+              <span>22%</span>
+              <span class="legend-bar"><i style="width:22%;background:#C9A84C"></i></span>
+            </div>
+            <div class="legend-row">
+              <span class="legend-dot" style="background:#D4856A"></span>
+              <span>Deteriorating</span>
+              <span>11%</span>
+              <span class="legend-bar"><i style="width:11%;background:#D4856A"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-card io-dash io-observe">
+          <p class="dash-kicker">Quarterly Portfolio Snapshot</p>
+          <h3 class="dash-chart-title font-display">Business Services — Q1–Q4 Revenue Trend</h3>
+          <div class="chart-box"><canvas id="chartBar"></canvas></div>
+          <div class="callout">Meridian Services shows strongest YoY growth trajectory at +32%</div>
+        </div>
+
+        <div class="dash-card io-dash io-observe">
+          <p class="dash-kicker">Key Risk Indicators</p>
+          <h3 class="dash-chart-title font-display">Credit Metrics vs. Industry Benchmarks</h3>
+          <div class="chart-box"><canvas id="chartHBar"></canvas></div>
+          <p class="kri-note">
+            <span class="metric-flag">Leverage Ratio</span> and <span class="metric-flag">DSCR</span> trail benchmark.
+          </p>
+          <p class="kri-summary">3 of 5 metrics within acceptable thresholds</p>
+        </div>
+
+        <div class="dash-card io-dash io-observe">
+          <p class="dash-kicker">Impact Metrics — Career to Date</p>
+          <h3 class="dash-chart-title font-display">Measurable Outcomes Across Roles</h3>
+          <div class="chart-box"><canvas id="chartLine"></canvas></div>
+          <div class="stat-pills">
+            <span class="stat-pill">+15% Forecasting Accuracy · Atlas Copco</span>
+            <span class="stat-pill">+40% Campaign KPIs · Strayos</span>
+            <span class="stat-pill">+20% Customer Satisfaction · Strayos</span>
+            <span class="stat-pill">−30% Risk Exposure · EY</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience">
+    <div class="section-inner">
+      <p class="section-label io-fade-up io-observe">Experience</p>
+      <h2 class="section-title font-display io-fade-up io-observe">A Track Record of Impact</h2>
+      <div class="timeline">
+        <div class="tl-row io-tl-right io-observe">
+          <span class="tl-dot"></span>
+          <div class="tl-meta">
+            <p class="tl-date">JAN 2026 — APR 2026</p>
+            <p class="tl-co">Ernst &amp; Young</p>
+          </div>
+          <div class="tl-content">
+            <h3 class="tl-role font-display">Technology Consultant</h3>
+            <p class="tl-desc">Conducted end-to-end IT/OT architecture assessment, identifying critical gaps in network segmentation and remote access. Developed risk analysis reports and data flow assessments aligned with industry frameworks.</p>
+            <div class="tl-impact">Reduced high-risk exposure by 30% through targeted solution design</div>
+            <div class="tag-row">
+              <span class="tag">Risk Analysis</span>
+              <span class="tag">Architecture Assessment</span>
+              <span class="tag">System Documentation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-row alt io-tl-left io-observe">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <h3 class="tl-role font-display">Business Analyst</h3>
+            <p class="tl-desc">Designed BPMN process workflows reducing operational redundancies 15%. Configured Power BI and Excel dashboards integrating CRM and operational data for actionable client insights.</p>
+            <div class="tl-impact">20% improvement in customer satisfaction through data-driven dashboard configuration</div>
+            <div class="tag-row">
+              <span class="tag">Power BI</span>
+              <span class="tag">BPMN</span>
+              <span class="tag">Process Optimization</span>
+              <span class="tag">Data Validation</span>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <p class="tl-date">JAN 2025 — MAY 2025</p>
+            <p class="tl-co">Strayos</p>
+          </div>
+        </div>
+
+        <div class="tl-row io-tl-right io-observe">
+          <span class="tl-dot"></span>
+          <div class="tl-meta">
+            <p class="tl-date">JUN 2024 — AUG 2024</p>
+            <p class="tl-co">Strayos</p>
+          </div>
+          <div class="tl-content">
+            <h3 class="tl-role font-display">Marketing Analyst</h3>
+            <p class="tl-desc">SQL and Tableau analysis of mining-industry campaigns. Optimized A/B tests across drilling, blasting, and mine optimization customer segments.</p>
+            <div class="tl-impact">+40% engagement KPIs through data-backed campaign decisions</div>
+            <div class="tag-row">
+              <span class="tag">SQL</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">A/B Testing</span>
+              <span class="tag">Campaign Analytics</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-row alt io-tl-left io-observe">
+          <span class="tl-dot"></span>
+          <div class="tl-content">
+            <h3 class="tl-role font-display">Consultant Intern</h3>
+            <p class="tl-desc">Partnered with external clients to assess operational efficiency gaps. Performed regression analysis on sales data to identify key revenue drivers.</p>
+            <div class="tl-impact">+15% forecasting accuracy through regression modeling</div>
+            <div class="tag-row">
+              <span class="tag">Regression Analysis</span>
+              <span class="tag">Client Consulting</span>
+              <span class="tag">KPI Projections</span>
+            </div>
+          </div>
+          <div class="tl-meta">
+            <p class="tl-date">JAN 2022 — FEB 2022 · Bangkok, Thailand</p>
+            <p class="tl-co">Atlas Copco Mining</p>
+          </div>
+        </div>
+
+        <div class="tl-row io-tl-right io-observe">
+          <span class="tl-dot"></span>
+          <div class="tl-meta">
+            <p class="tl-date">AUG 2024 — MAY 2025</p>
+            <p class="tl-co">University at Buffalo</p>
+          </div>
+          <div class="tl-content">
+            <h3 class="tl-role font-display">Undergraduate Teaching Assistant</h3>
+            <p class="tl-desc">Translated complex business concepts for 500+ students. Delivered structured feedback and mock interview coaching — client-oriented, solution-focused communication at scale.</p>
+            <div class="tag-row">
+              <span class="tag">Instructional Design</span>
+              <span class="tag">Stakeholder Communication</span>
+              <span class="tag">Coaching</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-inner">
+      <p class="section-label io-fade-up io-observe">Capabilities</p>
+      <h2 class="section-title font-display io-fade-up io-observe">Technical Arsenal</h2>
+      <div class="skills-grid">
+        <div class="io-skills-group io-observe">
+          <h3 class="skill-group-title">Risk &amp; Finance</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Credit Risk Analysis</span>
+            <span class="skill-pill">Portfolio Monitoring</span>
+            <span class="skill-pill">KPI Frameworks</span>
+            <span class="skill-pill">Financial Modeling</span>
+            <span class="skill-pill">Regression Analysis</span>
+            <span class="skill-pill">Due Diligence</span>
+            <span class="skill-pill">Forward-Looking Assessment</span>
+            <span class="skill-pill">Credit Structuring</span>
+          </div>
+        </div>
+        <div class="io-skills-group io-observe">
+          <h3 class="skill-group-title">Data &amp; Business Intelligence</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Python</span>
+            <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">Tableau</span>
+            <span class="skill-pill">Power BI</span>
+            <span class="skill-pill">Excel (Pivot/VLOOKUP)</span>
+            <span class="skill-pill">Dashboard Configuration</span>
+            <span class="skill-pill">A/B Testing</span>
+            <span class="skill-pill">Data Validation</span>
+          </div>
+        </div>
+        <div class="io-skills-group io-observe">
+          <h3 class="skill-group-title">Systems &amp; Platforms</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">SAP S/4HANA</span>
+            <span class="skill-pill">JIRA</span>
+            <span class="skill-pill">SharePoint</span>
+            <span class="skill-pill">Microsoft Access</span>
+            <span class="skill-pill">BPMN/Visio</span>
+            <span class="skill-pill">Process Documentation</span>
+            <span class="skill-pill">MRP</span>
+            <span class="skill-pill">Supply Chain Ops</span>
+          </div>
+        </div>
+        <div class="io-skills-group io-observe">
+          <h3 class="skill-group-title">Communication &amp; Delivery</h3>
+          <div class="skill-pills">
+            <span class="skill-pill">Executive Presentations</span>
+            <span class="skill-pill">Stakeholder Communication</span>
+            <span class="skill-pill">Cross-functional Coordination</span>
+            <span class="skill-pill">Client Liaison</span>
+            <span class="skill-pill">Training &amp; Instructional Design</span>
+            <span class="skill-pill">Project Documentation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="education">
+    <div class="section-inner">
+      <p class="section-label io-fade-up io-observe">Education</p>
+      <h2 class="section-title font-display io-fade-up io-observe">Academic Foundation</h2>
+      <div class="edu-grid">
+        <article class="edu-card io-card io-observe">
+          <div class="edu-accent" style="background:#C9A84C"></div>
+          <p class="edu-school">Kelley School of Business, Indiana University</p>
+          <h3 class="edu-degree font-display">Master of Science in Information Systems</h3>
+          <p class="edu-date">May 2026 · Bloomington, IN</p>
+          <p class="edu-conc"><strong>Concentration:</strong> Data Analytics &amp; Artificial Intelligence</p>
+          <p class="edu-cw-label">Coursework</p>
+          <div class="tag-row">
+            <span class="tag">Data Mining</span>
+            <span class="tag">Enterprise Data Management</span>
+            <span class="tag">Cloud and Platform Architecture</span>
+          </div>
+        </article>
+        <article class="edu-card io-card io-observe">
+          <div class="edu-accent" style="background:#1B4F8A"></div>
+          <p class="edu-school">University at Buffalo, SUNY</p>
+          <h3 class="edu-degree font-display">Bachelor of Science in Business Administration</h3>
+          <p class="edu-date">May 2025 · Buffalo, NY</p>
+          <p class="edu-conc"><strong>Concentration:</strong> Marketing · Minor: Communication</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer" id="contact">
+    <h2 class="font-display io-fade-up io-observe">Let's build something resilient.</h2>
+    <p class="footer-sub io-fade-up io-observe">Open to opportunities on the Business Services Credit Risk team at JPMorgan Chase.</p>
+    <div class="footer-actions io-fade-up io-observe">
+      <a href="mailto:shadutta@iu.edu" class="btn-pill btn-white">shadutta@iu.edu</a>
+      <a href="https://www.linkedin.com/in/shamik-dutta-majumdar" class="btn-pill btn-ghost-w" target="_blank" rel="noopener noreferrer">Connect on LinkedIn</a>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bar">
+      <span>Shamik Dutta Majumdar · Bloomington, IN · (716) 939-7138</span>
+      <span>Designed for JPMorgan Chase — Credit Risk Analyst, Business Services</span>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const ioOpts = { threshold: 0.15, rootMargin: "0px 0px -40px 0px" };
+      const obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) e.target.classList.add("io-visible");
+        });
+      }, ioOpts);
+      document.querySelectorAll(".io-observe").forEach(function (el) { obs.observe(el); });
+
+      Chart.defaults.font.family = "'Libre Franklin', sans-serif";
+      Chart.defaults.color = "#6B6B6B";
+
+      const common = { responsive: true, maintainAspectRatio: false };
+
+      new Chart(document.getElementById("chartDoughnut"), {
+        type: "doughnut",
+        data: {
+          labels: ["Investment Grade", "Performing", "Watch List", "Deteriorating"],
+          datasets: [{
+            data: [38, 29, 22, 11],
+            backgroundColor: ["#1B4F8A", "#4A7FC1", "#C9A84C", "#D4856A"],
+            borderWidth: 0,
+            hoverOffset: 4
+          }]
+        },
+        options: {
+          ...common,
+          cutout: "68%",
+          plugins: { legend: { display: false } }
+        }
+      });
+
+      new Chart(document.getElementById("chartBar"), {
+        type: "bar",
+        data: {
+          labels: ["Q1 2024", "Q2 2024", "Q3 2024", "Q4 2024"],
+          datasets: [
+            { label: "Apex Logistics", data: [520, 580, 610, 590], backgroundColor: "#1B4F8A", borderRadius: 2 },
+            { label: "Meridian Services", data: [310, 340, 380, 410], backgroundColor: "#4A7FC1", borderRadius: 2 },
+            { label: "Crestline Corp", data: [210, 195, 230, 260], backgroundColor: "#8BAFD6", borderRadius: 2 }
+          ]
+        },
+        options: {
+          ...common,
+          scales: {
+            x: { stacked: false, grid: { display: false } },
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Revenue ($M)",
+                font: { family: "'Courier Prime', monospace", size: 12 },
+                color: "#1A1A1A"
+              },
+              grid: { color: "rgba(216,208,196,0.6)" }
+            }
+          },
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 10, padding: 16 } } }
+        }
+      });
+
+      new Chart(document.getElementById("chartHBar"), {
+        type: "bar",
+        data: {
+          labels: ["Leverage Ratio", "DSCR", "Interest Coverage", "Net Debt/EBITDA", "Current Ratio"],
+          datasets: [
+            { label: "Actual", data: [4.2, 1.8, 3.1, 3.7, 1.4], backgroundColor: "#1B4F8A", borderRadius: 2 },
+            { label: "Benchmark", data: [3.5, 2.0, 2.5, 4.0, 1.2], backgroundColor: "#D8D0C4", borderRadius: 2 }
+          ]
+        },
+        options: {
+          ...common,
+          indexAxis: "y",
+          scales: {
+            x: {
+              beginAtZero: true,
+              grid: { color: "rgba(216,208,196,0.6)" }
+            },
+            y: { grid: { display: false } }
+          },
+          plugins: { legend: { position: "bottom", labels: { boxWidth: 10, padding: 16 } } }
+        }
+      });
+
+      const linePlugin = {
+        id: "lineValueLabels",
+        afterDatasetsDraw(chart) {
+          const meta = chart.getDatasetMeta(0);
+          const ctx = chart.ctx;
+          ctx.save();
+          ctx.font = "11px 'Courier Prime', monospace";
+          ctx.fillStyle = "#1A1A1A";
+          ctx.textAlign = "center";
+          meta.data.forEach(function (pt, i) {
+            const v = chart.data.datasets[0].data[i];
+            const y = pt.y - 12;
+            ctx.fillText(v + "%", pt.x, y);
+          });
+          ctx.restore();
+        }
+      };
+
+      new Chart(document.getElementById("chartLine"), {
+        type: "line",
+        plugins: [linePlugin],
+        data: {
+          labels: ["Atlas Copco", "Strayos Mktg", "Strayos BA", "EY Capstone"],
+          datasets: [{
+            label: "Performance Impact",
+            data: [15, 40, 20, 30],
+            borderColor: "#1B4F8A",
+            backgroundColor: "rgba(27,79,138,0.08)",
+            fill: true,
+            tension: 0.35,
+            pointRadius: 4,
+            pointBackgroundColor: "#1B4F8A",
+            borderWidth: 2
+          }]
+        },
+        options: {
+          ...common,
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 48,
+              title: {
+                display: true,
+                text: "Improvement %",
+                font: { family: "'Courier Prime', monospace", size: 12 },
+                color: "#1A1A1A"
+              },
+              grid: { color: "rgba(216,208,196,0.6)" }
+            },
+            x: { grid: { display: false } }
+          },
+          plugins: { legend: { display: false } }
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
